@@ -26,5 +26,4 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_AGENDA_DEL_RUNNER_TEST }}
           projectId: agenda-del-runner-test
-          target: live
 
