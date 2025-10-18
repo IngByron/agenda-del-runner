@@ -1,0 +1,170 @@
+/* Contenedor principal */
+.calendario-container {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrar todo */
+}
+
+/* Título */
+.calendario-container h1 {
+  color: #ff4d4f;
+  margin-bottom: 10px;
+}
+
+/* Descripción */
+.calendario-container p {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Estilo del calendario */
+.mi-calendario {
+  margin: 0 auto 30px; /* Centrado y un poco de margen abajo */
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Estilo de los días con evento */
+.react-calendar__tile.evento-activo {
+  background-color: #ff4d4f !important;
+  color: white !important;
+  font-weight: bold;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.react-calendar__tile.evento-activo:hover {
+  background-color: #d9363e !important;
+}
+
+/* Contenedor de los eventos del día */
+.evento-info {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff5f5;
+  border: 1px solid #ffcccc;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Estilo de cada evento */
+.evento-item {
+  padding: 12px;
+  border: 1px solid #ffcccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: #fff5f5;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.evento-item:hover {
+  background-color: #ffd6d6;
+}
+
+.evento-item strong {
+  font-size: 1.1rem;
+  color: #ff4d4f;
+}
+
+.evento-item small {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Modal styles remain the same */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 77, 79, 0.15); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: #fff5f5;
+  padding: 25px 30px;
+  border: 1px solid #ffcccc;
+  border-radius: 12px;
+  max-width: 480px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 20px rgba(255, 77, 79, 0.3);
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  text-align: left;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
+  color: #d9363e;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: #ff4d4f;
+}
+
+.modal-content h2 {
+  color: #ff4d4f;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.modal-content h3 {
+  color: #d9363e;
+  margin-top: 25px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.modal-content a {
+  color: #ff4d4f;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.modal-content a:hover {
+  text-decoration: underline;
+}
+
+.modal-content p {
+  margin-bottom: 12px;
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+
+.modal-content div > a {
+  margin-right: 15px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.modal-content strong {
+  color: #d9363e;
+}
