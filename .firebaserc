@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "agenda-del-runner-test"
-  }
+  },
+  "targets": {
+    "agenda-del-runner-test": {
+      "hosting": {
+        "live": [
+          "agenda-del-runner-test"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
