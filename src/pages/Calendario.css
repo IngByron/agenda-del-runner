@@ -7,12 +7,12 @@
   font-family: 'Arial', sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centrar todo */
+  align-items: center;
 }
 
 /* Título */
 .calendario-container h1 {
-  color: #ff4d4f;
+  color: #140f07; /* color1 */
   margin-bottom: 10px;
 }
 
@@ -20,12 +20,12 @@
 .calendario-container p {
   margin-bottom: 30px;
   font-size: 1.1rem;
-  color: #555;
+  color: #1d2442; /* color2 */
 }
 
 /* Estilo del calendario */
 .mi-calendario {
-  margin: 0 auto 30px; /* Centrado y un poco de margen abajo */
+  margin: 0 auto 30px;
   border: none;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   border-radius: 10px;
@@ -34,7 +34,7 @@
 
 /* Estilo de los días con evento */
 .react-calendar__tile.evento-activo {
-  background-color: #ff4d4f !important;
+  background-color: #4c5997 !important; /* color3 */
   color: white !important;
   font-weight: bold;
   border-radius: 50%;
@@ -42,15 +42,15 @@
 }
 
 .react-calendar__tile.evento-activo:hover {
-  background-color: #d9363e !important;
+  background-color: #8291f7 !important; /* color4 */
 }
 
 /* Contenedor de los eventos del día */
 .evento-info {
   margin-top: 20px;
   padding: 20px;
-  background-color: #fff5f5;
-  border: 1px solid #ffcccc;
+  background-color: #c9d7f7; /* color5 */
+  border: 1px solid #8291f7; /* color4 */
   border-radius: 8px;
   width: 100%;
   box-sizing: border-box;
@@ -59,38 +59,38 @@
 /* Estilo de cada evento */
 .evento-item {
   padding: 12px;
-  border: 1px solid #ffcccc;
+  border: 1px solid #8291f7; /* color4 */
   border-radius: 8px;
   margin-bottom: 15px;
-  background-color: #fff5f5;
+  background-color: #c9d7f7; /* color5 */
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .evento-item:hover {
-  background-color: #ffd6d6;
+  background-color: #8291f7; /* color4 */
 }
 
 .evento-item strong {
   font-size: 1.1rem;
-  color: #ff4d4f;
+  color: #140f07; /* color1 */
 }
 
 .evento-item small {
   display: block;
   margin-top: 5px;
   font-size: 0.9rem;
-  color: #555;
+  color: #1d2442; /* color2 */
 }
 
-/* Modal styles remain the same */
+/* Modal styles */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 77, 79, 0.15); 
+  background-color: rgba(140, 145, 247, 0.15); /* color4 semi-transparente */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,17 +99,17 @@
 }
 
 .modal-content {
-  background-color: #fff5f5;
+  background-color: #c9d7f7; /* color5 */
   padding: 25px 30px;
-  border: 1px solid #ffcccc;
+  border: 1px solid #8291f7; /* color4 */
   border-radius: 12px;
   max-width: 480px;
   width: 90%;
   max-height: 80vh;
   overflow-y: auto;
-  box-shadow: 0 8px 20px rgba(255, 77, 79, 0.3);
+  box-shadow: 0 8px 20px rgba(130, 145, 247, 0.3); /* color4 */
   font-family: 'Arial', sans-serif;
-  color: #333;
+  color: #1d2442; /* color2 */
   text-align: left;
 }
 
@@ -121,30 +121,30 @@
   background: transparent;
   font-size: 28px;
   cursor: pointer;
-  color: #d9363e;
+  color: #4c5997; /* color3 */
   font-weight: 700;
   transition: color 0.2s ease;
 }
 
 .modal-close:hover {
-  color: #ff4d4f;
+  color: #140f07; /* color1 */
 }
 
 .modal-content h2 {
-  color: #ff4d4f;
+  color: #140f07; /* color1 */
   margin-bottom: 15px;
   font-weight: 700;
 }
 
 .modal-content h3 {
-  color: #d9363e;
+  color: #4c5997; /* color3 */
   margin-top: 25px;
   margin-bottom: 8px;
   font-weight: 600;
 }
 
 .modal-content a {
-  color: #ff4d4f;
+  color: #4c5997; /* color3 */
   text-decoration: none;
   font-weight: 600;
 }
@@ -166,5 +166,5 @@
 }
 
 .modal-content strong {
-  color: #d9363e;
+  color: #140f07; /* color1 */
 }

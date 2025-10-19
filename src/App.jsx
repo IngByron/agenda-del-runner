@@ -1,14 +1,28 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from 'antd';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Calendario from './pages/Calendario';
 import AdminPanel from './pages/AdminPanel';
+import { AuthProvider } from './context/AuthContext';
+import { useAuth } from './hooks/useAuth';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
-function App() {
+// Componente para proteger rutas
+function ProtectedRoute({ children }) {
+  const { user, loading } = useAuth();
+
+  if (loading) return <p>Cargando...</p>; // Puedes poner un spinner
+
+  if (!user) return <Navigate to="/access-portal-2025" />;
+
+  return children;
+}
+
+function AppContent() {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Header style={{ padding: 0 }}>
@@ -17,16 +31,29 @@ function App() {
       <Content style={{ padding: '24px' }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/carreras" element={<AdminPanel />} />
-          <Route path="/access-portal-2025" element={<Login />} />
           <Route path="/calendario" element={<Calendario />} />
+          <Route path="/access-portal-2025" element={<Login />} />
+
+          {/* Rutas protegidas */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <AdminPanel />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>
-        Agenda del Runner ©2025
-      </Footer>
+        <Footer />
     </Layout>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
+  );
+}

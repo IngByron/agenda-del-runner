@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./Navbar.css";
+import React, { useState } from 'react';
+import './Navbar.css';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,19 +9,22 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
-      <div className="logo">MiSitio</div>
-
-      <div className={`nav-links ${menuOpen ? "open" : ""}`}>
-        <a href="/">Inicio</a>
-        <a href="#sobre-mi">Sobre mí</a>
-        <a href="#donar">Donar</a>
-      </div>
-
-      <div className={`hamburger ${menuOpen ? "open" : ""}`} onClick={toggleMenu}>
-        <span></span>
-        <span></span>
-        <span></span>
+    <nav className={`navbar ${menuOpen ? 'open' : ''}`}>
+      <div className="navbar-container">
+        <div className="navbar-logo">Calendario del Runner</div>
+        <ul className={`navbar-links ${menuOpen ? 'active' : ''}`}>
+          <li className="navbar-item">
+            <a href="/" className="navbar-link">Inicio</a>
+          </li>
+          <li className="navbar-item">
+            <a href="/donar" className="navbar-link">Donar</a>
+          </li>
+        </ul>
+        <div className="navbar-menu" onClick={toggleMenu}>
+          <div className="navbar-menu-bar"></div>
+          <div className="navbar-menu-bar"></div>
+          <div className="navbar-menu-bar"></div>
+        </div>
       </div>
     </nav>
   );

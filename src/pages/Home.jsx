@@ -14,8 +14,8 @@ const Home = () => {
           className="home-hero-image"
         />
         <div className="home-hero-overlay">
-          <h1>Calendario Runner</h1>
-          <p>Descubre las próximas carreras en tu país</p>
+          <h1>Bienvenido</h1>
+          <p>Descubre las próximas carreras en el país</p>
           <button onClick={() => navigate('/calendario')} className="home-hero-button">
             Ver Calendario
           </button>
@@ -26,18 +26,17 @@ const Home = () => {
         <h2>¿De qué se trata esta página?</h2>
         <p>
           Esta plataforma está diseñada para todos los amantes del running.
-          Aquí podrás encontrar información actualizada sobre eventos y carreras
+          Aquí podrás encontrar información sobre eventos y carreras
           que se llevarán a cabo en todo el país.
-        </p>
-        <p>
+          <br/>
           Ya seas principiante o corredor experimentado, aquí tendrás una vista clara y resumida de lo que viene,
           podrás planificar tu calendario y mantenerte al tanto de los eventos más importantes.
         </p>
-        <p>
-          Esta página no recibe retribución económica alguna, ya que está creada con el propósito de formar una comunidad agradable 
+        {/* <p>
+          Esta página no recibe retribución económica alguna por publicar los eventos de los organizadores, ya que está creada con el propósito de formar una comunidad agradable 
           de corredores para todos. Sin embargo, cualquier donación será bienvenida para ayudar a mantener el sitio operativo y a que
           podamos continuar informando sobre los eventos de running en el país.
-        </p>
+        </p> */}
       </section>
 
       <section className="home-call-to-action">
