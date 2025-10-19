@@ -1,20 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Card, Button, Modal, Form, Input, DatePicker, InputNumber, Typography, message, Table, Space, Select } from "antd";
 import { signOut } from "firebase/auth";
 import { useAuth } from "../hooks/useAuth";
 import { auth } from "../firebase/config";
-import {
-  addOrganizador,
-  getOrganizadores,
-  updateOrganizador,
-  deleteOrganizador
-} from "../firebase/organizadores";
-import {
-  addEvento,
-  getEventos,
-  updateEvento,
-  deleteEvento
-} from "../firebase/eventos";
+import { Helmet } from "react-helmet";
+import { addOrganizador, getOrganizadores, updateOrganizador, deleteOrganizador } from "../firebase/organizadores";
+import { addEvento, getEventos, updateEvento, deleteEvento } from "../firebase/eventos";
 import moment from 'moment';
 import "./AdminPanel.css";
 
@@ -176,7 +167,7 @@ const AdminPanel = () => {
       message.success("Organizador eliminado");
       fetchOrganizadores();
     } catch (error) {
-      message.error("Error al eliminar organizador");
+      message.error("Error al eliminar organizador: ",error);
     }
   };
 
@@ -186,7 +177,7 @@ const AdminPanel = () => {
       message.success("Evento eliminado");
       fetchEventos();
     } catch (error) {
-      message.error("Error al eliminar evento");
+      message.error("Error al eliminar evento: ",error);
     }
   };
 
@@ -228,6 +219,10 @@ const AdminPanel = () => {
 
   return (
     <div className="admin-container">
+      {/* Usando React Helmet para evitar que esta página sea indexada */}
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <div className="admin-header">
         <Title level={2} className="admin-title">Panel de Administración</Title>
         {user && <Text className="admin-user">Sesión iniciada como: {user.email}</Text>}

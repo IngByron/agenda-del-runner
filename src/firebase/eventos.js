@@ -8,7 +8,6 @@ const collectionName = "eventos";
 export const addEvento = async (evento) => {
   try {
     const docRef = await addDoc(collection(db, collectionName), evento);
-    console.log("Evento guardado con ID:", docRef.id);
     return docRef.id;
   } catch (error) {
     console.error("Error guardando evento:", error);

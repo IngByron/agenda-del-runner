@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Form, Input, Button, Card, Typography } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
@@ -6,14 +6,15 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/config";
 import { useEffect } from "react";
 import { useAuth } from "../hooks/useAuth";
+import { Helmet } from "react-helmet";
 import "./Login.css";
 
 const { Title } = Typography;
 
 const Login = () => {
   const navigate = useNavigate();
-  const { user } = useAuth(); // obtiene el usuario logueado
-  const [errorMessage, setErrorMessage] = useState(""); // Estado para manejar el mensaje de error
+  const { user } = useAuth(); 
+  const [errorMessage, setErrorMessage] = useState(""); 
 
   useEffect(() => {
     if (user) {
@@ -46,6 +47,10 @@ const Login = () => {
 
   return (
     <div className="login-container">
+      {/* Usando React Helmet para evitar que esta página sea indexada */}
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <Card className="login-card" bordered={false}>
         <Title level={3} className="login-title">
           Iniciar sesión

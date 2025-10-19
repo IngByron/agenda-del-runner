@@ -1,4 +1,4 @@
-// mocks.js
+// mocks.js Datos de Prueba
 
 export const organizadores = {
   org1: {

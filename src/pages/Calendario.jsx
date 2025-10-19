@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './Calendario.css';
@@ -118,10 +118,10 @@ const Calendario = () => {
             <button className="modal-close" onClick={cerrarModal} aria-label="Cerrar modal">×</button>
             <h2>{eventoSeleccionado.nombre}</h2>
             <p>
-  <strong>Fecha:</strong>{" "}
-  {eventoSeleccionado.fecha ? moment(eventoSeleccionado.fecha.toDate()).format('YYYY-MM-DD') : "No disponible"}{" "}
-  {eventoSeleccionado.hora || ""}
-</p>
+              <strong>Fecha:</strong>{" "}
+              {eventoSeleccionado.fecha ? moment(eventoSeleccionado.fecha.toDate()).format('YYYY-MM-DD') : "No disponible"}{" "}
+              {eventoSeleccionado.hora || ""}
+            </p>
             <p><strong>Ciudad:</strong> {eventoSeleccionado.ciudad}</p>
             <p><strong>Lugar:</strong> {eventoSeleccionado.lugar}</p>
             <p><strong>Categoría:</strong> {eventoSeleccionado.categoria}</p>

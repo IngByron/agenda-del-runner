@@ -8,7 +8,6 @@ const collectionName = "organizadores";
 export const addOrganizador = async (organizador) => {
   try {
     const docRef = await addDoc(collection(db, collectionName), organizador);
-    console.log("Organizador guardado con ID:", docRef.id);
     return docRef.id;
   } catch (error) {
     console.error("Error guardando organizador:", error);

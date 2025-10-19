@@ -25,6 +25,7 @@ body, html, div, section, h1, h2, h3, p, button {
   height: 100%;
   object-fit: cover;
   filter: brightness(0.5); /* más oscuro para mejorar contraste */
+  transition: transform 0.1s ease-out; /* Suaviza el movimiento */
 }
 
 .home-hero-overlay {
@@ -70,25 +71,90 @@ body, html, div, section, h1, h2, h3, p, button {
 /* ABOUT SECTION */
 .home-about {
   padding: 60px 20px;
-  max-width: 800px;
+  max-width: 1000px;
   margin: auto;
   background-color: #c9d7f7; /* color5 */
   text-align: center;
   border-radius: 12px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .home-about h2 {
   color: #1d2442; /* color2 */
-  margin-bottom: 20px;
-  font-size: 2rem;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: bold;
 }
 
-.home-about p {
-  font-size: 1.1rem;
-  margin-bottom: 16px;
-  line-height: 1.6;
-  color: #140f07; /* color1 */
+.image-attribution {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 1px; /* Aumenta el margen superior */
 }
+
+/* About text */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.about-text {
+  max-width: 800px;
+  font-size: 1.1rem;
+  color: #140f07; /* color1 */
+  line-height: 1.7;
+}
+
+.about-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.icon-box {
+  text-align: center;
+  max-width: 150px;
+  padding: 20px;
+  background-color: #8291f7; /* color4 */
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icon-box img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.icon-box p {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.icon-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .home-about {
+    padding: 40px 20px;
+  }
+
+  .about-icons {
+    flex-direction: column;
+  }
+
+  .about-text {
+    font-size: 1rem;
+  }
+}
+
 
 /* CALL TO ACTION SECTION */
 .home-call-to-action {

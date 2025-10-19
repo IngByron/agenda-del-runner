@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -6,6 +6,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Calendario from './pages/Calendario';
 import AdminPanel from './pages/AdminPanel';
+import Forbidden from './error_pages/Forbidden'; // Error 403
+import NotFound from './error_pages/NotFound'; // Error 404
+import ServerError from './error_pages/ServerError'; // Error 500
 import { AuthProvider } from './context/AuthContext';
 import { useAuth } from './hooks/useAuth';
 
@@ -15,9 +18,9 @@ const { Header, Content } = Layout;
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
 
-  if (loading) return <p>Cargando...</p>; // Puedes poner un spinner
+  if (loading) return <p>Cargando...</p>; 
 
-  if (!user) return <Navigate to="/access-portal-2025" />;
+  if (!user) return <NotFound/>;
 
   return children;
 }
@@ -43,6 +46,7 @@ function AppContent() {
               </ProtectedRoute>
             }
           />
+          <Route path="*" element={<NotFound />} /> {/* Captura todas las rutas no definidas */}
         </Routes>
       </Content>
         <Footer />
