@@ -61,7 +61,7 @@ const Calendario = () => {
   return (
     <div className="calendario-container">
       <h1>Calendario de Carreras</h1>
-      <p>Selecciona una fecha para ver los eventos programados.</p>
+      <p>Selecciona una fecha para ver los eventos conocidos.</p>
 
       <Calendar
         onChange={setSelectedDate}
@@ -70,18 +70,36 @@ const Calendario = () => {
         className="mi-calendario"
         tileClassName={({ date, view }) => {
           if (view === 'month') {
-            const dateStr = formatDate(date);
             const tieneEvento = eventos.some(e => {
               if (!e.fecha) return false;
+              let fechaEvento;
               if (e.fecha.toDate) { // Timestamp de Firestore
-                return formatDate(e.fecha.toDate()) === dateStr;
+                fechaEvento = formatFirestoreDate(e.fecha);
+              } else {
+                fechaEvento = e.fecha;
               }
-              return e.fecha === dateStr;
+              return fechaEvento === formatDate(date);
             });
-            if (tieneEvento) return 'evento-activo';
+
+            // Verificar si la fecha del evento es anterior a la fecha actual
+            const isEventPassed = eventos.some(e => {
+              if (!e.fecha) return false;
+              let fechaEvento;
+              if (e.fecha.toDate) {
+                fechaEvento = formatFirestoreDate(e.fecha);
+              } else {
+                fechaEvento = e.fecha;
+              }
+              // Compara la fecha del evento con la fecha actual
+              return fechaEvento === formatDate(date) && moment(fechaEvento).isBefore(moment(), 'day');
+            });
+
+            if (isEventPassed) return 'evento-pasado'; // Evento pasado (rojo)
+            if (tieneEvento) return 'evento-activo'; // Evento futuro
           }
           return null;
         }}
+
 
       />
 
@@ -102,8 +120,10 @@ const Calendario = () => {
               }}
               title="Haz click para ver detalles"
             >
-              <strong>{evento.nombre}</strong><br />
-              <small>{evento.hora} - {evento.lugar}, {evento.ciudad}</small>
+              <strong>{evento.nombre}</strong>
+              <pre/>
+              <small>{moment(evento.fecha.toDate()).format('DD/MM/YYYY')} - {evento.lugar}, {evento.ciudad}</small>
+              <em><pre>Clica aquí para más información</pre></em>
             </div>
           ))
         ) : (
@@ -128,13 +148,7 @@ const Calendario = () => {
             <p><strong>Distancias:</strong> {eventoSeleccionado.distancia.join(', ')}</p>
             <p><strong>Descripción:</strong> {eventoSeleccionado.descripcion}</p>
             <p><strong>Precio:</strong> {eventoSeleccionado.precio > 0 ? `$${eventoSeleccionado.precio}` : 'Gratis'}</p>
-            {eventoSeleccionado.urlInscripcion && (
-              <p>
-                <a href={eventoSeleccionado.urlInscripcion} target="_blank" rel="noreferrer">
-                  Inscribirse aquí
-                </a>
-              </p>
-            )}
+            <p><strong>Inscripciones:</strong> {eventoSeleccionado.urlInscripcion && <a href={eventoSeleccionado.urlInscripcion} target="_blank" rel="noreferrer">Click aquí</a>}</p>
 
             {/* Info del organizador */}
             {(() => {
@@ -142,11 +156,12 @@ const Calendario = () => {
               if (!org) return null;
               return (
                 <>
-                  <hr style={{ borderColor: '#e41a1aff', margin: '25px 0' }} />
+                  <hr style={{ borderColor: '#000000ff', margin: '25px 0' }} />
                   <h3>Organizador: {org.nombre}</h3>
                   <p>{org.descripcion}</p>
-                  <p><strong>Contacto:</strong> {org.telefono} | {org.email}</p>
-                  <p><strong>Sitio Web:</strong> {org.paginaWeb && <a href={org.paginaWeb} target="_blank" rel="noreferrer">{org.paginaWeb}</a>}</p>
+                  <p><strong>Celular:</strong> {org.telefono}</p>
+                  <p><strong>Email:</strong> {org.email}</p>
+                  <p><strong>Sitio Web / Red Social:</strong> {org.paginaWeb && <a href={org.paginaWeb} target="_blank" rel="noreferrer">{org.paginaWeb}</a>}</p>
                   {/* <div>
                     {org.redes?.facebook && (
                       <a href={`https://facebook.com/${org.redes.facebook}`} target="_blank" rel="noreferrer">

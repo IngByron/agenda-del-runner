@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -11,7 +11,9 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${menuOpen ? 'open' : ''}`}>
       <div className="navbar-container">
+        <a href="/">
         <div className="navbar-logo">Agenda del Runner</div>
+        </a>
         <ul className={`navbar-links ${menuOpen ? 'active' : ''}`}>
           <li className="navbar-item">
             <a href="/" className="navbar-link">Inicio</a>

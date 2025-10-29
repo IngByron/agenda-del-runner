@@ -45,6 +45,20 @@
   background-color: #8291f7 !important; /* color4 */
 }
 
+/* Estilo de los días con eventos pasados */
+.react-calendar__tile.evento-pasado {
+  background-color: #e74c3c !important; /* Rojo para eventos pasados */
+  color: white !important;
+  font-weight: bold;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.react-calendar__tile.evento-pasado:hover {
+  background-color: #f39c12 !important; /* Amarillo al pasar el ratón */
+}
+
+
 /* Contenedor de los eventos del día */
 .evento-info {
   margin-top: 20px;
